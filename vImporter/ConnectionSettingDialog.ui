@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ConnectionSettingDialog</class>
+ <widget class="QDialog" name="ConnectionSettingDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>380</width>
+    <height>240</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Thiết lập kết nối</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="MainWindow.qrc">
+    <normaloff>:/icons/configuration.svg</normaloff>:/icons/configuration.svg</iconset>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="hostLabel">
+       <property name="text">
+        <string>Máy chủ:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="userLineEdit"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="passwordLabel">
+       <property name="text">
+        <string>Mật khẩu:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="passwordLineEdit">
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="hostLineEdit">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="portLabel">
+       <property name="text">
+        <string>Cổng:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="portLineEdit">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="userLabel">
+       <property name="text">
+        <string>Tài khoản:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="dbNameLabel">
+       <property name="text">
+        <string>Cơ sở dữ liệu:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="dbNameLineEdit"/>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="noticeLabel">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="connectButton">
+       <property name="text">
+        <string>Kết nối</string>
+       </property>
+       <property name="icon">
+        <iconset resource="MainWindow.qrc">
+         <normaloff>:/icons/connection.svg</normaloff>:/icons/connection.svg</iconset>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okButton">
+       <property name="text">
+        <string>Ok</string>
+       </property>
+       <property name="icon">
+        <iconset resource="MainWindow.qrc">
+         <normaloff>:/icons/apply.svg</normaloff>:/icons/apply.svg</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelButton">
+       <property name="text">
+        <string>Hủy</string>
+       </property>
+       <property name="icon">
+        <iconset resource="MainWindow.qrc">
+         <normaloff>:/icons/cancel.svg</normaloff>:/icons/cancel.svg</iconset>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>hostLineEdit</tabstop>
+  <tabstop>portLineEdit</tabstop>
+  <tabstop>dbNameLineEdit</tabstop>
+  <tabstop>userLineEdit</tabstop>
+  <tabstop>passwordLineEdit</tabstop>
+  <tabstop>connectButton</tabstop>
+  <tabstop>okButton</tabstop>
+  <tabstop>cancelButton</tabstop>
+ </tabstops>
+ <resources>
+  <include location="MainWindow.qrc"/>
+ </resources>
+ <connections/>
+</ui>

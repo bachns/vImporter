@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Widgets">
+      <UniqueIdentifier>{949b597a-53f3-4de5-84cc-0ea5d66f2a67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialogs">
+      <UniqueIdentifier>{c796a233-2f6e-4df9-b341-9e258dad9449}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{fc629de9-31fe-484e-9a08-fa0a432be2c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{7d9092df-59ae-4ead-9e96-74ebced9e36f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities">
+      <UniqueIdentifier>{39529193-13d7-4d9f-b291-8c9d1ce4c4be}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="MainWindow.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtRcc Include="style.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Copier.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Vietnamese.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanner.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectionSettingDialog.cpp">
+      <Filter>Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="ScanningWidget.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalVariables.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleCrypt.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="TuLieuBanDo-odb.cxx">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="TuLieu-odb.cxx">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="TuLieuType-odb.cxx">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="NhomTuLieu-odb.cxx">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="PhanLoaiTuLieuWidget.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectionParams.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="NhapKhoWidget.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="OracleConnection.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="vImporter.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="ConnectionSettingDialog.ui">
+      <Filter>Dialogs</Filter>
+    </QtUic>
+    <QtUic Include="ScanningWidget.ui">
+      <Filter>Widgets</Filter>
+    </QtUic>
+    <QtUic Include="MainWindow.ui">
+      <Filter>Main</Filter>
+    </QtUic>
+    <QtUic Include="PhanLoaiTuLieuWidget.ui">
+      <Filter>Widgets</Filter>
+    </QtUic>
+    <QtUic Include="NhapKhoWidget.ui">
+      <Filter>Widgets</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Copier.h">
+      <Filter>Core</Filter>
+    </QtMoc>
+    <QtMoc Include="Scanner.h">
+      <Filter>Core</Filter>
+    </QtMoc>
+    <QtMoc Include="ConnectionSettingDialog.h">
+      <Filter>Dialogs</Filter>
+    </QtMoc>
+    <QtMoc Include="ScanningWidget.h">
+      <Filter>Widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="MainWindow.h">
+      <Filter>Main</Filter>
+    </QtMoc>
+    <QtMoc Include="PhanLoaiTuLieuWidget.h">
+      <Filter>Widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="NhapKhoWidget.h">
+      <Filter>Widgets</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Utils.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Vietnamese.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalVariables.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleCrypt.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="TuLieuBanDo-odb.ixx">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="TuLieuBanDo-odb.hxx">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="TuLieu-odb.hxx">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="TuLieu-odb.ixx">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="TuLieuType-odb.ixx">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="TuLieuType-odb.hxx">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="NhomTuLieu-odb.ixx">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="NhomTuLieu-odb.hxx">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectionParams.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="OracleConnection.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CongVan.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="TuLieuBanDo.hxx">
+      <Filter>Entities</Filter>
+    </CustomBuild>
+    <CustomBuild Include="TuLieu.hxx">
+      <Filter>Entities</Filter>
+    </CustomBuild>
+    <CustomBuild Include="NhomTuLieu.hxx">
+      <Filter>Entities</Filter>
+    </CustomBuild>
+    <CustomBuild Include="TuLieuType.hxx">
+      <Filter>Entities</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

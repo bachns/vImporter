@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/apply.svg</file>
+        <file>icons/cancel.svg</file>
+        <file>icons/connection.svg</file>
+        <file>icons/vImporter.svg</file>
+        <file>icons/image.svg</file>
+        <file>icons/database.svg</file>
+        <file>icons/setting.svg</file>
+        <file>icons/configuration.svg</file>
+        <file>icons/scan.svg</file>
+        <file>icons/placeholder.svg</file>
+    </qresource>
+</RCC>
