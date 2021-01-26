@@ -59,5 +59,5 @@ QString Vietnamese::green(const wchar_t* text)
 
 QString Vietnamese::blue(const wchar_t* text)
 {
-	return QString("<font color='#00AAFF'>%1</font>").arg(str(text));
+	return QString("<font color='#148CD2'>%1</font>").arg(str(text));
 }
