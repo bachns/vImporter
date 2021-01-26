@@ -1,16 +1,18 @@
 ﻿#include "ScanningWidget.h"
 #include "Vietnamese.h"
 #include "GlobalVariables.h"
-#include "Scanner.h"
-#include "Copier.h"
 #include "Utils.h"
+#include "Scanner.h"
 
 #include <spdlog/spdlog.h>
 #include <QThread>
 #include <QStandardItemModel>
 #include <QFileDialog>
+#include <QTextStream>
 #include <QDateTime>
-#include <QDebug>
+#include <QTimer>
+#include <QMenu>
+#include <QPointer>
 
 ScanningWidget::ScanningWidget(QWidget* parent)
 	: QWidget(parent)
@@ -18,13 +20,11 @@ ScanningWidget::ScanningWidget(QWidget* parent)
 	spdlog::get("logger")->trace(__FUNCTION__);
 
 	setupUi(this);
+
 	connect(scanButton, &QPushButton::clicked, this, &ScanningWidget::scan);
 	connect(browseScanDirButton, &QPushButton::clicked, this, &ScanningWidget::browseScanDir);
-	connect(storeButton, &QPushButton::clicked, this, &ScanningWidget::store);
-	connect(browseStoreDirButton, &QPushButton::clicked, this, &ScanningWidget::browseStoreDir);
-	connect(saveTableButton, &QPushButton::clicked, this, &ScanningWidget::saveTable);
 
-	mItemModel = std::make_unique<QStandardItemModel>(0, 4, tableView);
+	mItemModel = QSharedPointer<QStandardItemModel>(new QStandardItemModel(0, 4, tableView));
 	mItemModel->setHeaderData(0, Qt::Horizontal, Vietnamese::str(L"Số hiệu mảnh"));
 	mItemModel->setHeaderData(1, Qt::Horizontal, Vietnamese::str(L"Thời gian"));
 	mItemModel->setHeaderData(2, Qt::Horizontal, Vietnamese::str(L"Đường dẫn"));
@@ -33,10 +33,10 @@ ScanningWidget::ScanningWidget(QWidget* parent)
 	tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
 	tableView->setSelectionMode(QAbstractItemView::SingleSelection);
 	tableView->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
-
-	folderProgressLineEdit->setVisible(false);
-	progressBar->hide();
-
+	tableView->setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(tableView, SIGNAL(customContextMenuRequested(const QPoint&)),
+		this, SLOT(slotCustomMenuRequested(const QPoint&)));
+	
 	auto it = GlobalVariables::mMapScaleProperties.begin();
 	auto end = GlobalVariables::mMapScaleProperties.end();
 	while (it != end)
@@ -46,13 +46,13 @@ ScanningWidget::ScanningWidget(QWidget* parent)
 		mapScaleComboBox->addItem(mapScaleProperty.mName, QVariant::fromValue<MapScale>(scale));
 		++it;
 	}
-	loadTablesFromDatabase();
 }
 
 ScanningWidget::~ScanningWidget()
 {
 	spdlog::get("logger")->trace(__FUNCTION__);
 }
+
 
 void ScanningWidget::browseScanDir()
 {
@@ -71,12 +71,14 @@ void ScanningWidget::scan() const
 	if (dir.isEmpty())
 		return;
 
-	auto* scanner = new Scanner(dir, regExp);
-	auto* thread = new QThread();
+	QPointer<Scanner> scanner(new Scanner(dir, regExp));
+	QPointer<QThread> thread(new QThread);
 	scanner->moveToThread(thread);
 
 	connect(scanner, SIGNAL(started()), this, SLOT(scannerStarted()));
 	connect(scanner, SIGNAL(finished()), this, SLOT(scannerFinished()));
+	connect(scanner, &Scanner::finished, [this] { emit finished(mItemModel); });
+		
 	connect(scanner, SIGNAL(progressPath(const QString&)), this, SLOT(scannerProgress(const QString&)));
 	connect(scanner, SIGNAL(detected(const QString&, const QString&, const QDateTime&)),
 		this, SLOT(scannerDetection(const QString&, const QString&, const QDateTime&)));
@@ -90,20 +92,20 @@ void ScanningWidget::scan() const
 
 void ScanningWidget::scannerStarted() const
 {
-	folderProgressLineEdit->setVisible(true);
 	auto rowCount = mItemModel->rowCount();
 	mItemModel->removeRows(0, rowCount);
+	statusLabel->clear();
+	setTotalLabel(0);
 }
 
 void ScanningWidget::scannerFinished() const
 {
-	folderProgressLineEdit->setVisible(false);
-	QApplication::beep();
+	statusLabel->setText(Vietnamese::blue(L"Đã quét xong!"));
 }
 
 void ScanningWidget::scannerProgress(const QString& message) const
 {
-	folderProgressLineEdit->setText(message);
+	statusLabel->setText(message);
 }
 
 void ScanningWidget::scannerDetection(const QString& name, const QString& path,
@@ -115,68 +117,29 @@ void ScanningWidget::scannerDetection(const QString& name, const QString& path,
 	mItemModel->setItem(row, 0, new QStandardItem(correctName));
 	mItemModel->setItem(row, 1, new QStandardItem(dateTime.toString("dd/MM/yyyy")));
 	mItemModel->setItem(row, 2, new QStandardItem(path));
+	setTotalLabel(row + 1);
 }
 
-void ScanningWidget::store() const
+void ScanningWidget::slotCustomMenuRequested(const QPoint& p)
 {
-	if (mItemModel->rowCount() == 0)
+	if (mItemModel == nullptr || mItemModel->rowCount() == 0)
 		return;
 
-	auto storeDir = storeDirLineEdit->text();
-	if (storeDir.trimmed().isEmpty())
-		return;
+	QPointer<QMenu> menu(new QMenu(this));
+	auto makeSameWithAction = menu->addAction(Vietnamese::str(L"Dãn cột mặc định"));
+	auto fitContentAction = menu->addAction(Vietnamese::str(L"Dãn cột theo nội dung"));
+	auto saveAction = menu->addAction(Vietnamese::str(L"Lưu bảng"));
 
-	auto* copier = new Copier(mItemModel.get(), storeDir);
-	auto* thread = new QThread();
-	copier->moveToThread(thread);
+	connect(fitContentAction, &QAction::triggered, [this] {
+		tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+		});
 
-	connect(copier, SIGNAL(started()), this, SLOT(copierStarted()));
-	connect(copier, SIGNAL(finished()), this, SLOT(copierFinished()));
-	connect(copier, SIGNAL(progressPath(const QString&)), this, SLOT(copierProgress(const QString&)));
-	connect(copier, SIGNAL(progress(int)), this, SLOT(copierProgress(int)));
+	connect(makeSameWithAction, &QAction::triggered, [this] {
+		tableView->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
+		});
 
-	connect(copier, SIGNAL(finished()), thread, SLOT(quit()));
-	connect(copier, SIGNAL(finished()), copier, SLOT(deleteLater()));
-	connect(thread, SIGNAL(started()), copier, SLOT(run()));
-	connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
-	thread->start();
-}
-
-void ScanningWidget::browseStoreDir()
-{
-	auto dir = QFileDialog::getExistingDirectory(this, Vietnamese::str(L"Chọn thư mục lưu"));
-	if (!dir.isEmpty())
-	{
-		storeDirLineEdit->setText(dir);
-	}
-}
-
-void ScanningWidget::copierStarted() const
-{
-	progressPathLabel->clear();
-	progressBar->show();
-	progressBar->setMaximum(mItemModel->rowCount());
-	progressBar->setValue(0);
-}
-
-void ScanningWidget::copierFinished() const
-{
-	progressBar->hide();
-	progressPathLabel->clear();
-}
-
-void ScanningWidget::copierProgress(const QString& path) const
-{
-	if (path.length() > 48)
-		progressPathLabel->setText(path.left(24) + " ... " + path.right(24));
-	else
-		progressPathLabel->setText(path);
-}
-
-void ScanningWidget::copierProgress(int row) const
-{
-	progressBar->setValue(row + 1);
-	mItemModel->setItem(row, 3, new QStandardItem(QIcon(":/icons/apply.svg"), "Xong"));
+	connect(saveAction, &QAction::triggered, [this] { saveTable(); });
+	menu->popup(tableView->viewport()->mapToGlobal(p));
 }
 
 void ScanningWidget::saveTable()
@@ -205,8 +168,11 @@ void ScanningWidget::saveTable()
 	}
 
 	file.close();
+	statusLabel->setVisible(true);
+	statusLabel->setText(Vietnamese::blue(L"Đã lưu bảng xong!"));
 }
 
-void ScanningWidget::loadTablesFromDatabase() const
+void ScanningWidget::setTotalLabel(int count) const
 {
+	totalLabel->setText(Vietnamese::str(L"Số lượng: %1").arg(count));
 }

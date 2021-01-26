@@ -13,6 +13,9 @@ public:
 	explicit ScanningWidget(QWidget* parent = Q_NULLPTR);
 	~ScanningWidget() override;
 
+signals:
+	void finished(QSharedPointer<QStandardItemModel>) const;
+
 private slots:
 	void scan() const;
 	void browseScanDir();
@@ -22,18 +25,12 @@ private slots:
 	void scannerDetection(const QString& name, const QString& path,
 		const QDateTime& dateTime) const;
 
-	void store() const;
-	void browseStoreDir();
-	void copierStarted() const;
-	void copierFinished() const;
-	void copierProgress(const QString& path) const;
-	void copierProgress(int row) const;
-
-	void saveTable();
-
+	void slotCustomMenuRequested(const QPoint& p);
+	
 private:
-	std::unique_ptr<QStandardItemModel> mItemModel;
-	void loadTablesFromDatabase() const;
+	QSharedPointer<QStandardItemModel> mItemModel;
+	void saveTable();
+	void setTotalLabel(int count) const;
 };
 
 #endif
