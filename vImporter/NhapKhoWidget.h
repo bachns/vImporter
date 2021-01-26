@@ -13,7 +13,16 @@ public:
 	~NhapKhoWidget();
 	void reload();
 
+private slots:
+	void store() const;
+	void browseStoreDir();
+	void copierStarted() const;
+	void copierFinished() const;
+	void copierProgress(const QString& path) const;
+	void copierProgress(int row) const;
+
 private:
+	QSharedPointer<QStandardItemModel> mItemModel;
 };
 
 #endif
