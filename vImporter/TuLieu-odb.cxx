@@ -114,7 +114,7 @@ namespace odb
 
     // mMaTuLieu
     //
-    b[n].type = oracle::bind::string;
+    b[n].type = oracle::bind::nstring;
     b[n].buffer = i.mMaTuLieu_value;
     b[n].capacity = static_cast<ub4> (sizeof (i.mMaTuLieu_value));
     b[n].size = &i.mMaTuLieu_size;
@@ -123,7 +123,7 @@ namespace odb
 
     // mTenTuLieu
     //
-    b[n].type = oracle::bind::string;
+    b[n].type = oracle::bind::nstring;
     b[n].buffer = i.mTenTuLieu_value;
     b[n].capacity = static_cast<ub4> (sizeof (i.mTenTuLieu_value));
     b[n].size = &i.mTenTuLieu_size;
@@ -221,7 +221,7 @@ namespace odb
       std::size_t size (0);
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_image (
+          oracle::id_nstring >::set_image (
         i.mMaTuLieu_value,
         sizeof (i.mMaTuLieu_value),
         size,
@@ -241,7 +241,7 @@ namespace odb
       std::size_t size (0);
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_image (
+          oracle::id_nstring >::set_image (
         i.mTenTuLieu_value,
         sizeof (i.mTenTuLieu_value),
         size,
@@ -360,7 +360,7 @@ namespace odb
 
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_value (
+          oracle::id_nstring >::set_value (
         v,
         i.mMaTuLieu_value,
         i.mMaTuLieu_size,
@@ -375,7 +375,7 @@ namespace odb
 
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_value (
+          oracle::id_nstring >::set_value (
         v,
         i.mTenTuLieu_value,
         i.mTenTuLieu_size,

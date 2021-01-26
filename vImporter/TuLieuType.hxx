@@ -19,7 +19,7 @@ public:
 #pragma db object(TuLieuType) table("TULIEUTYPE")
 #pragma db member(TuLieuType::mTuLieuTypeId) id auto column("TULIEUTYPEID")
 #pragma db member(TuLieuType::mMa) type("NVARCHAR2(50)") column("MA")
-#pragma db member(TuLieuType::mMoTa) type("NVARCHAR2(50)") column("MOTA")
+#pragma db member(TuLieuType::mMoTa) type("NVARCHAR2(255)") column("MOTA")
 #pragma db member(TuLieuType::mNhomTuLieu) column("NHOMTULIEU")
 #pragma db member(TuLieuType::mNguoiSuaId) column("NGUOISUAID")
 #pragma db member(TuLieuType::mNgayChinhSua) column("NGAYCHINHSUA")

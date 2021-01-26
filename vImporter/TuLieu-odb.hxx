@@ -146,8 +146,8 @@ namespace odb
     oracle::query_column<
       oracle::value_traits<
         ::QString,
-        oracle::id_string >::query_type,
-      oracle::id_string >
+        oracle::id_nstring >::query_type,
+      oracle::id_nstring >
     mMaTuLieu_type_;
 
     static const mMaTuLieu_type_ mMaTuLieu;
@@ -158,8 +158,8 @@ namespace odb
     oracle::query_column<
       oracle::value_traits<
         ::QString,
-        oracle::id_string >::query_type,
-      oracle::id_string >
+        oracle::id_nstring >::query_type,
+      oracle::id_nstring >
     mTenTuLieu_type_;
 
     static const mTenTuLieu_type_ mTenTuLieu;
@@ -226,12 +226,12 @@ namespace odb
   template <typename A>
   const typename query_columns< ::TuLieu, id_oracle, A >::mMaTuLieu_type_
   query_columns< ::TuLieu, id_oracle, A >::
-  mMaTuLieu (A::table_name, "\"MATULIEU\"", 0, 512);
+  mMaTuLieu (A::table_name, "\"MATULIEU\"", 0, 200);
 
   template <typename A>
   const typename query_columns< ::TuLieu, id_oracle, A >::mTenTuLieu_type_
   query_columns< ::TuLieu, id_oracle, A >::
-  mTenTuLieu (A::table_name, "\"TENTULIEU\"", 0, 512);
+  mTenTuLieu (A::table_name, "\"TENTULIEU\"", 0, 600);
 
   template <typename A>
   const typename query_columns< ::TuLieu, id_oracle, A >::mDonGia_type_
@@ -291,13 +291,13 @@ namespace odb
 
       // mMaTuLieu
       //
-      char mMaTuLieu_value[512];
+      char mMaTuLieu_value[200];
       ub2 mMaTuLieu_size;
       sb2 mMaTuLieu_indicator;
 
       // mTenTuLieu
       //
-      char mTenTuLieu_value[512];
+      char mTenTuLieu_value[600];
       ub2 mTenTuLieu_size;
       sb2 mTenTuLieu_indicator;
 

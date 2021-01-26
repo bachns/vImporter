@@ -170,8 +170,8 @@ namespace odb
     oracle::query_column<
       oracle::value_traits<
         ::QString,
-        oracle::id_string >::query_type,
-      oracle::id_string >
+        oracle::id_nstring >::query_type,
+      oracle::id_nstring >
     mPhienHieuManh_type_;
 
     static const mPhienHieuManh_type_ mPhienHieuManh;
@@ -182,8 +182,8 @@ namespace odb
     oracle::query_column<
       oracle::value_traits<
         ::QString,
-        oracle::id_string >::query_type,
-      oracle::id_string >
+        oracle::id_nstring >::query_type,
+      oracle::id_nstring >
     mKhuDo_type_;
 
     static const mKhuDo_type_ mKhuDo;
@@ -194,8 +194,8 @@ namespace odb
     oracle::query_column<
       oracle::value_traits<
         ::QString,
-        oracle::id_string >::query_type,
-      oracle::id_string >
+        oracle::id_nstring >::query_type,
+      oracle::id_nstring >
     mTenManh_type_;
 
     static const mTenManh_type_ mTenManh;
@@ -230,8 +230,8 @@ namespace odb
     oracle::query_column<
       oracle::value_traits<
         ::QString,
-        oracle::id_string >::query_type,
-      oracle::id_string >
+        oracle::id_nstring >::query_type,
+      oracle::id_nstring >
     mHeDoCao_type_;
 
     static const mHeDoCao_type_ mHeDoCao;
@@ -242,8 +242,8 @@ namespace odb
     oracle::query_column<
       oracle::value_traits<
         ::QString,
-        oracle::id_string >::query_type,
-      oracle::id_string >
+        oracle::id_nstring >::query_type,
+      oracle::id_nstring >
     mLuoiChieu_type_;
 
     static const mLuoiChieu_type_ mLuoiChieu;
@@ -254,8 +254,8 @@ namespace odb
     oracle::query_column<
       oracle::value_traits<
         ::QString,
-        oracle::id_string >::query_type,
-      oracle::id_string >
+        oracle::id_nstring >::query_type,
+      oracle::id_nstring >
     mMuiChieu_type_;
 
     static const mMuiChieu_type_ mMuiChieu;
@@ -266,8 +266,8 @@ namespace odb
     oracle::query_column<
       oracle::value_traits<
         ::QString,
-        oracle::id_string >::query_type,
-      oracle::id_string >
+        oracle::id_nstring >::query_type,
+      oracle::id_nstring >
     mKinhTuyenTruc_type_;
 
     static const mKinhTuyenTruc_type_ mKinhTuyenTruc;
@@ -278,8 +278,8 @@ namespace odb
     oracle::query_column<
       oracle::value_traits<
         ::QString,
-        oracle::id_string >::query_type,
-      oracle::id_string >
+        oracle::id_nstring >::query_type,
+      oracle::id_nstring >
     mTaiLieuGoc_type_;
 
     static const mTaiLieuGoc_type_ mTaiLieuGoc;
@@ -290,8 +290,8 @@ namespace odb
     oracle::query_column<
       oracle::value_traits<
         ::QString,
-        oracle::id_string >::query_type,
-      oracle::id_string >
+        oracle::id_nstring >::query_type,
+      oracle::id_nstring >
     mTaiLieuPhu_type_;
 
     static const mTaiLieuPhu_type_ mTaiLieuPhu;
@@ -302,8 +302,8 @@ namespace odb
     oracle::query_column<
       oracle::value_traits<
         ::QString,
-        oracle::id_string >::query_type,
-      oracle::id_string >
+        oracle::id_nstring >::query_type,
+      oracle::id_nstring >
     mKhoangCaoDeu_type_;
 
     static const mKhoangCaoDeu_type_ mKhoangCaoDeu;
@@ -314,8 +314,8 @@ namespace odb
     oracle::query_column<
       oracle::value_traits<
         ::QString,
-        oracle::id_string >::query_type,
-      oracle::id_string >
+        oracle::id_nstring >::query_type,
+      oracle::id_nstring >
     mKhoangCaoDeuDs_type_;
 
     static const mKhoangCaoDeuDs_type_ mKhoangCaoDeuDs;
@@ -506,8 +506,8 @@ namespace odb
     oracle::query_column<
       oracle::value_traits<
         ::QString,
-        oracle::id_string >::query_type,
-      oracle::id_string >
+        oracle::id_nstring >::query_type,
+      oracle::id_nstring >
     mDuongDanThuMuc_type_;
 
     static const mDuongDanThuMuc_type_ mDuongDanThuMuc;
@@ -596,17 +596,17 @@ namespace odb
   template <typename A>
   const typename query_columns< ::TuLieuBanDo, id_oracle, A >::mPhienHieuManh_type_
   query_columns< ::TuLieuBanDo, id_oracle, A >::
-  mPhienHieuManh (A::table_name, "\"PHIENHIEUMANH\"", 0, 512);
+  mPhienHieuManh (A::table_name, "\"PHIENHIEUMANH\"", 0, 200);
 
   template <typename A>
   const typename query_columns< ::TuLieuBanDo, id_oracle, A >::mKhuDo_type_
   query_columns< ::TuLieuBanDo, id_oracle, A >::
-  mKhuDo (A::table_name, "\"KHUDO\"", 0, 512);
+  mKhuDo (A::table_name, "\"KHUDO\"", 0, 400);
 
   template <typename A>
   const typename query_columns< ::TuLieuBanDo, id_oracle, A >::mTenManh_type_
   query_columns< ::TuLieuBanDo, id_oracle, A >::
-  mTenManh (A::table_name, "\"TENMANH\"", 0, 512);
+  mTenManh (A::table_name, "\"TENMANH\"", 0, 200);
 
   template <typename A>
   const typename query_columns< ::TuLieuBanDo, id_oracle, A >::mTyLeId_type_
@@ -621,42 +621,42 @@ namespace odb
   template <typename A>
   const typename query_columns< ::TuLieuBanDo, id_oracle, A >::mHeDoCao_type_
   query_columns< ::TuLieuBanDo, id_oracle, A >::
-  mHeDoCao (A::table_name, "\"HEDOCAO\"", 0, 512);
+  mHeDoCao (A::table_name, "\"HEDOCAO\"", 0, 200);
 
   template <typename A>
   const typename query_columns< ::TuLieuBanDo, id_oracle, A >::mLuoiChieu_type_
   query_columns< ::TuLieuBanDo, id_oracle, A >::
-  mLuoiChieu (A::table_name, "\"LUOICHIEU\"", 0, 512);
+  mLuoiChieu (A::table_name, "\"LUOICHIEU\"", 0, 200);
 
   template <typename A>
   const typename query_columns< ::TuLieuBanDo, id_oracle, A >::mMuiChieu_type_
   query_columns< ::TuLieuBanDo, id_oracle, A >::
-  mMuiChieu (A::table_name, "\"MUICHIEU\"", 0, 512);
+  mMuiChieu (A::table_name, "\"MUICHIEU\"", 0, 200);
 
   template <typename A>
   const typename query_columns< ::TuLieuBanDo, id_oracle, A >::mKinhTuyenTruc_type_
   query_columns< ::TuLieuBanDo, id_oracle, A >::
-  mKinhTuyenTruc (A::table_name, "\"KINHTUYENTRUC\"", 0, 512);
+  mKinhTuyenTruc (A::table_name, "\"KINHTUYENTRUC\"", 0, 200);
 
   template <typename A>
   const typename query_columns< ::TuLieuBanDo, id_oracle, A >::mTaiLieuGoc_type_
   query_columns< ::TuLieuBanDo, id_oracle, A >::
-  mTaiLieuGoc (A::table_name, "\"TAILIEUGOC\"", 0, 512);
+  mTaiLieuGoc (A::table_name, "\"TAILIEUGOC\"", 0, 4000);
 
   template <typename A>
   const typename query_columns< ::TuLieuBanDo, id_oracle, A >::mTaiLieuPhu_type_
   query_columns< ::TuLieuBanDo, id_oracle, A >::
-  mTaiLieuPhu (A::table_name, "\"TAILIEUPHU\"", 0, 512);
+  mTaiLieuPhu (A::table_name, "\"TAILIEUPHU\"", 0, 3600);
 
   template <typename A>
   const typename query_columns< ::TuLieuBanDo, id_oracle, A >::mKhoangCaoDeu_type_
   query_columns< ::TuLieuBanDo, id_oracle, A >::
-  mKhoangCaoDeu (A::table_name, "\"KHOANGCAODEU\"", 0, 512);
+  mKhoangCaoDeu (A::table_name, "\"KHOANGCAODEU\"", 0, 400);
 
   template <typename A>
   const typename query_columns< ::TuLieuBanDo, id_oracle, A >::mKhoangCaoDeuDs_type_
   query_columns< ::TuLieuBanDo, id_oracle, A >::
-  mKhoangCaoDeuDs (A::table_name, "\"KHOANGCAODEUDS\"", 0, 512);
+  mKhoangCaoDeuDs (A::table_name, "\"KHOANGCAODEUDS\"", 0, 400);
 
   template <typename A>
   const typename query_columns< ::TuLieuBanDo, id_oracle, A >::mPhuongPhapTlId_type_
@@ -736,7 +736,7 @@ namespace odb
   template <typename A>
   const typename query_columns< ::TuLieuBanDo, id_oracle, A >::mDuongDanThuMuc_type_
   query_columns< ::TuLieuBanDo, id_oracle, A >::
-  mDuongDanThuMuc (A::table_name, "\"DUONGDANTHUMUC\"", 0, 512);
+  mDuongDanThuMuc (A::table_name, "\"DUONGDANTHUMUC\"", 0, 400);
 
   template <typename A>
   const typename query_columns< ::TuLieuBanDo, id_oracle, A >::mNguoiSuaId_type_
@@ -808,19 +808,19 @@ namespace odb
 
       // mPhienHieuManh
       //
-      char mPhienHieuManh_value[512];
+      char mPhienHieuManh_value[200];
       ub2 mPhienHieuManh_size;
       sb2 mPhienHieuManh_indicator;
 
       // mKhuDo
       //
-      char mKhuDo_value[512];
+      char mKhuDo_value[400];
       ub2 mKhuDo_size;
       sb2 mKhuDo_indicator;
 
       // mTenManh
       //
-      char mTenManh_value[512];
+      char mTenManh_value[200];
       ub2 mTenManh_size;
       sb2 mTenManh_indicator;
 
@@ -836,49 +836,49 @@ namespace odb
 
       // mHeDoCao
       //
-      char mHeDoCao_value[512];
+      char mHeDoCao_value[200];
       ub2 mHeDoCao_size;
       sb2 mHeDoCao_indicator;
 
       // mLuoiChieu
       //
-      char mLuoiChieu_value[512];
+      char mLuoiChieu_value[200];
       ub2 mLuoiChieu_size;
       sb2 mLuoiChieu_indicator;
 
       // mMuiChieu
       //
-      char mMuiChieu_value[512];
+      char mMuiChieu_value[200];
       ub2 mMuiChieu_size;
       sb2 mMuiChieu_indicator;
 
       // mKinhTuyenTruc
       //
-      char mKinhTuyenTruc_value[512];
+      char mKinhTuyenTruc_value[200];
       ub2 mKinhTuyenTruc_size;
       sb2 mKinhTuyenTruc_indicator;
 
       // mTaiLieuGoc
       //
-      char mTaiLieuGoc_value[512];
+      char mTaiLieuGoc_value[4000];
       ub2 mTaiLieuGoc_size;
       sb2 mTaiLieuGoc_indicator;
 
       // mTaiLieuPhu
       //
-      char mTaiLieuPhu_value[512];
+      char mTaiLieuPhu_value[3600];
       ub2 mTaiLieuPhu_size;
       sb2 mTaiLieuPhu_indicator;
 
       // mKhoangCaoDeu
       //
-      char mKhoangCaoDeu_value[512];
+      char mKhoangCaoDeu_value[400];
       ub2 mKhoangCaoDeu_size;
       sb2 mKhoangCaoDeu_indicator;
 
       // mKhoangCaoDeuDs
       //
-      char mKhoangCaoDeuDs_value[512];
+      char mKhoangCaoDeuDs_value[400];
       ub2 mKhoangCaoDeuDs_size;
       sb2 mKhoangCaoDeuDs_indicator;
 
@@ -959,7 +959,7 @@ namespace odb
 
       // mDuongDanThuMuc
       //
-      char mDuongDanThuMuc_value[512];
+      char mDuongDanThuMuc_value[400];
       ub2 mDuongDanThuMuc_size;
       sb2 mDuongDanThuMuc_indicator;
 

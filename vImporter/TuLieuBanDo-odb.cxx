@@ -130,7 +130,7 @@ namespace odb
 
     // mPhienHieuManh
     //
-    b[n].type = oracle::bind::string;
+    b[n].type = oracle::bind::nstring;
     b[n].buffer = i.mPhienHieuManh_value;
     b[n].capacity = static_cast<ub4> (sizeof (i.mPhienHieuManh_value));
     b[n].size = &i.mPhienHieuManh_size;
@@ -139,7 +139,7 @@ namespace odb
 
     // mKhuDo
     //
-    b[n].type = oracle::bind::string;
+    b[n].type = oracle::bind::nstring;
     b[n].buffer = i.mKhuDo_value;
     b[n].capacity = static_cast<ub4> (sizeof (i.mKhuDo_value));
     b[n].size = &i.mKhuDo_size;
@@ -148,7 +148,7 @@ namespace odb
 
     // mTenManh
     //
-    b[n].type = oracle::bind::string;
+    b[n].type = oracle::bind::nstring;
     b[n].buffer = i.mTenManh_value;
     b[n].capacity = static_cast<ub4> (sizeof (i.mTenManh_value));
     b[n].size = &i.mTenManh_size;
@@ -175,7 +175,7 @@ namespace odb
 
     // mHeDoCao
     //
-    b[n].type = oracle::bind::string;
+    b[n].type = oracle::bind::nstring;
     b[n].buffer = i.mHeDoCao_value;
     b[n].capacity = static_cast<ub4> (sizeof (i.mHeDoCao_value));
     b[n].size = &i.mHeDoCao_size;
@@ -184,7 +184,7 @@ namespace odb
 
     // mLuoiChieu
     //
-    b[n].type = oracle::bind::string;
+    b[n].type = oracle::bind::nstring;
     b[n].buffer = i.mLuoiChieu_value;
     b[n].capacity = static_cast<ub4> (sizeof (i.mLuoiChieu_value));
     b[n].size = &i.mLuoiChieu_size;
@@ -193,7 +193,7 @@ namespace odb
 
     // mMuiChieu
     //
-    b[n].type = oracle::bind::string;
+    b[n].type = oracle::bind::nstring;
     b[n].buffer = i.mMuiChieu_value;
     b[n].capacity = static_cast<ub4> (sizeof (i.mMuiChieu_value));
     b[n].size = &i.mMuiChieu_size;
@@ -202,7 +202,7 @@ namespace odb
 
     // mKinhTuyenTruc
     //
-    b[n].type = oracle::bind::string;
+    b[n].type = oracle::bind::nstring;
     b[n].buffer = i.mKinhTuyenTruc_value;
     b[n].capacity = static_cast<ub4> (sizeof (i.mKinhTuyenTruc_value));
     b[n].size = &i.mKinhTuyenTruc_size;
@@ -211,7 +211,7 @@ namespace odb
 
     // mTaiLieuGoc
     //
-    b[n].type = oracle::bind::string;
+    b[n].type = oracle::bind::nstring;
     b[n].buffer = i.mTaiLieuGoc_value;
     b[n].capacity = static_cast<ub4> (sizeof (i.mTaiLieuGoc_value));
     b[n].size = &i.mTaiLieuGoc_size;
@@ -220,7 +220,7 @@ namespace odb
 
     // mTaiLieuPhu
     //
-    b[n].type = oracle::bind::string;
+    b[n].type = oracle::bind::nstring;
     b[n].buffer = i.mTaiLieuPhu_value;
     b[n].capacity = static_cast<ub4> (sizeof (i.mTaiLieuPhu_value));
     b[n].size = &i.mTaiLieuPhu_size;
@@ -229,7 +229,7 @@ namespace odb
 
     // mKhoangCaoDeu
     //
-    b[n].type = oracle::bind::string;
+    b[n].type = oracle::bind::nstring;
     b[n].buffer = i.mKhoangCaoDeu_value;
     b[n].capacity = static_cast<ub4> (sizeof (i.mKhoangCaoDeu_value));
     b[n].size = &i.mKhoangCaoDeu_size;
@@ -238,7 +238,7 @@ namespace odb
 
     // mKhoangCaoDeuDs
     //
-    b[n].type = oracle::bind::string;
+    b[n].type = oracle::bind::nstring;
     b[n].buffer = i.mKhoangCaoDeuDs_value;
     b[n].capacity = static_cast<ub4> (sizeof (i.mKhoangCaoDeuDs_value));
     b[n].size = &i.mKhoangCaoDeuDs_size;
@@ -382,7 +382,7 @@ namespace odb
 
     // mDuongDanThuMuc
     //
-    b[n].type = oracle::bind::string;
+    b[n].type = oracle::bind::nstring;
     b[n].buffer = i.mDuongDanThuMuc_value;
     b[n].capacity = static_cast<ub4> (sizeof (i.mDuongDanThuMuc_value));
     b[n].size = &i.mDuongDanThuMuc_size;
@@ -512,7 +512,7 @@ namespace odb
       std::size_t size (0);
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_image (
+          oracle::id_nstring >::set_image (
         i.mPhienHieuManh_value,
         sizeof (i.mPhienHieuManh_value),
         size,
@@ -532,7 +532,7 @@ namespace odb
       std::size_t size (0);
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_image (
+          oracle::id_nstring >::set_image (
         i.mKhuDo_value,
         sizeof (i.mKhuDo_value),
         size,
@@ -552,7 +552,7 @@ namespace odb
       std::size_t size (0);
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_image (
+          oracle::id_nstring >::set_image (
         i.mTenManh_value,
         sizeof (i.mTenManh_value),
         size,
@@ -600,7 +600,7 @@ namespace odb
       std::size_t size (0);
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_image (
+          oracle::id_nstring >::set_image (
         i.mHeDoCao_value,
         sizeof (i.mHeDoCao_value),
         size,
@@ -620,7 +620,7 @@ namespace odb
       std::size_t size (0);
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_image (
+          oracle::id_nstring >::set_image (
         i.mLuoiChieu_value,
         sizeof (i.mLuoiChieu_value),
         size,
@@ -640,7 +640,7 @@ namespace odb
       std::size_t size (0);
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_image (
+          oracle::id_nstring >::set_image (
         i.mMuiChieu_value,
         sizeof (i.mMuiChieu_value),
         size,
@@ -660,7 +660,7 @@ namespace odb
       std::size_t size (0);
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_image (
+          oracle::id_nstring >::set_image (
         i.mKinhTuyenTruc_value,
         sizeof (i.mKinhTuyenTruc_value),
         size,
@@ -680,7 +680,7 @@ namespace odb
       std::size_t size (0);
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_image (
+          oracle::id_nstring >::set_image (
         i.mTaiLieuGoc_value,
         sizeof (i.mTaiLieuGoc_value),
         size,
@@ -700,7 +700,7 @@ namespace odb
       std::size_t size (0);
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_image (
+          oracle::id_nstring >::set_image (
         i.mTaiLieuPhu_value,
         sizeof (i.mTaiLieuPhu_value),
         size,
@@ -720,7 +720,7 @@ namespace odb
       std::size_t size (0);
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_image (
+          oracle::id_nstring >::set_image (
         i.mKhoangCaoDeu_value,
         sizeof (i.mKhoangCaoDeu_value),
         size,
@@ -740,7 +740,7 @@ namespace odb
       std::size_t size (0);
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_image (
+          oracle::id_nstring >::set_image (
         i.mKhoangCaoDeuDs_value,
         sizeof (i.mKhoangCaoDeuDs_value),
         size,
@@ -970,7 +970,7 @@ namespace odb
       std::size_t size (0);
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_image (
+          oracle::id_nstring >::set_image (
         i.mDuongDanThuMuc_value,
         sizeof (i.mDuongDanThuMuc_value),
         size,
@@ -1124,7 +1124,7 @@ namespace odb
 
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_value (
+          oracle::id_nstring >::set_value (
         v,
         i.mPhienHieuManh_value,
         i.mPhienHieuManh_size,
@@ -1139,7 +1139,7 @@ namespace odb
 
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_value (
+          oracle::id_nstring >::set_value (
         v,
         i.mKhuDo_value,
         i.mKhuDo_size,
@@ -1154,7 +1154,7 @@ namespace odb
 
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_value (
+          oracle::id_nstring >::set_value (
         v,
         i.mTenManh_value,
         i.mTenManh_size,
@@ -1197,7 +1197,7 @@ namespace odb
 
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_value (
+          oracle::id_nstring >::set_value (
         v,
         i.mHeDoCao_value,
         i.mHeDoCao_size,
@@ -1212,7 +1212,7 @@ namespace odb
 
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_value (
+          oracle::id_nstring >::set_value (
         v,
         i.mLuoiChieu_value,
         i.mLuoiChieu_size,
@@ -1227,7 +1227,7 @@ namespace odb
 
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_value (
+          oracle::id_nstring >::set_value (
         v,
         i.mMuiChieu_value,
         i.mMuiChieu_size,
@@ -1242,7 +1242,7 @@ namespace odb
 
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_value (
+          oracle::id_nstring >::set_value (
         v,
         i.mKinhTuyenTruc_value,
         i.mKinhTuyenTruc_size,
@@ -1257,7 +1257,7 @@ namespace odb
 
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_value (
+          oracle::id_nstring >::set_value (
         v,
         i.mTaiLieuGoc_value,
         i.mTaiLieuGoc_size,
@@ -1272,7 +1272,7 @@ namespace odb
 
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_value (
+          oracle::id_nstring >::set_value (
         v,
         i.mTaiLieuPhu_value,
         i.mTaiLieuPhu_size,
@@ -1287,7 +1287,7 @@ namespace odb
 
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_value (
+          oracle::id_nstring >::set_value (
         v,
         i.mKhoangCaoDeu_value,
         i.mKhoangCaoDeu_size,
@@ -1302,7 +1302,7 @@ namespace odb
 
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_value (
+          oracle::id_nstring >::set_value (
         v,
         i.mKhoangCaoDeuDs_value,
         i.mKhoangCaoDeuDs_size,
@@ -1527,7 +1527,7 @@ namespace odb
 
       oracle::value_traits<
           ::QString,
-          oracle::id_string >::set_value (
+          oracle::id_nstring >::set_value (
         v,
         i.mDuongDanThuMuc_value,
         i.mDuongDanThuMuc_size,

@@ -214,7 +214,7 @@ namespace odb
   template <typename A>
   const typename query_columns< ::TuLieuType, id_oracle, A >::mMoTa_type_
   query_columns< ::TuLieuType, id_oracle, A >::
-  mMoTa (A::table_name, "\"MOTA\"", 0, 200);
+  mMoTa (A::table_name, "\"MOTA\"", 0, 1020);
 
   template <typename A>
   const typename query_columns< ::TuLieuType, id_oracle, A >::mNhomTuLieu_type_
@@ -274,7 +274,7 @@ namespace odb
 
       // mMoTa
       //
-      char mMoTa_value[200];
+      char mMoTa_value[1020];
       ub2 mMoTa_size;
       sb2 mMoTa_indicator;
 
