@@ -36,9 +36,13 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="props\spdlog-d-64.props" />
     <Import Project="props\odb-d.props" />
+    <Import Project="props\xlnt-d.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="props\spdlog-64.props" />
+    <Import Project="props\odb.props" />
+    <Import Project="props\xlnt.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
@@ -48,6 +52,36 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>Entity;Dialog;Widget;Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <PreBuildEvent>
+      <Command>AutoIncrementVersion --build $(ProjectDir)</Command>
+      <Message>AutoIncrementVersion --build $(ProjectDir)</Message>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>copy $(SolutionDir)x64\Release\$(SolutionName).exe $(SolutionDir)x64\vImporter\$(SolutionName).exe </Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>copy $(SolutionDir)x64\Release\$(SolutionName).exe $(SolutionDir)x64\vImporter\$(SolutionName).exe </Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>Entity;Dialog;Widget;Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <PreBuildEvent>
+      <Command>AutoIncrementVersion --build $(ProjectDir)</Command>
+      <Message>AutoIncrementVersion --build $(ProjectDir)</Message>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>copy $(SolutionDir)x64\Release\$(SolutionName).exe $(SolutionDir)x64\vImporter\$(SolutionName).exe </Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>copy $(SolutionDir)x64\Release\$(SolutionName).exe $(SolutionDir)x64\vImporter\$(SolutionName).exe </Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>msvc2017_64</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
@@ -88,100 +122,202 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ConnectionParams.cpp" />
-    <ClCompile Include="ConnectionSettingDialog.cpp" />
-    <ClCompile Include="Copier.cpp" />
-    <ClCompile Include="GlobalVariables.cpp" />
-    <ClCompile Include="NhapKhoWidget.cpp" />
-    <ClCompile Include="NhomTuLieu-odb.cxx" />
-    <QtMoc Include="NhapKhoWidget.h" />
-    <ClInclude Include="CongVan.hxx" />
-    <ClInclude Include="NhomTuLieu-odb.ixx">
+    <ClCompile Include="Core\ConnectionParams.cpp" />
+    <ClCompile Include="Core\Copier.cpp" />
+    <ClCompile Include="Core\Database.cpp" />
+    <ClCompile Include="Core\MapInfo.cpp" />
+    <ClCompile Include="Core\Scanner.cpp" />
+    <ClCompile Include="Core\SimpleCrypt.cpp" />
+    <ClCompile Include="Core\Utils.cpp" />
+    <ClCompile Include="Core\Vietnamese.cpp" />
+    <ClCompile Include="Dialog\ConnectionSettingDialog.cpp" />
+    <ClInclude Include="Core\MapInfo.h" />
+    <ClCompile Include="Dialog\ThemCongVanDialog.cpp" />
+    <ClCompile Include="Entity\HeQuyChieuType-odb.cxx" />
+    <QtMoc Include="Dialog\ThemCongVanDialog.h" />
+    <ClInclude Include="Entity\HeQuyChieuType-odb.ixx">
       <FileType>Document</FileType>
     </ClInclude>
-    <ClCompile Include="OracleConnection.cpp" />
-    <ClCompile Include="PhanLoaiTuLieuWidget.cpp" />
-    <ClCompile Include="Scanner.cpp" />
-    <ClCompile Include="ScanningWidget.cpp" />
-    <ClCompile Include="SimpleCrypt.cpp" />
-    <ClCompile Include="TuLieu-odb.cxx" />
-    <CustomBuild Include="NhomTuLieu.hxx">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"> odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --generate-query --generate-schema NhomTuLieu.hxx</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb NhomTuLieu.hxx</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NhomTuLieu-odb.hxx;NhomTuLieu-odb.cxx;NhomTuLieu-odb.ixx;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'"> odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --generate-query --generate-schema NhomTuLieu.hxx</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb NhomTuLieu.hxx</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NhomTuLieu-odb.hxx;NhomTuLieu-odb.cxx;NhomTuLieu-odb.ixx;%(Outputs)</Outputs>
+    <ClCompile Include="Entity\Kho-odb.cxx" />
+    <ClInclude Include="Entity\Kho-odb.ixx">
+      <FileType>Document</FileType>
+    </ClInclude>
+    <ClCompile Include="Entity\NguoiKy-odb.cxx" />
+    <ClInclude Include="Entity\NguoiKy-odb.ixx">
+      <FileType>Document</FileType>
+    </ClInclude>
+    <ClCompile Include="Entity\NhomTuLieu-odb.cxx" />
+    <CustomBuild Include="Entity\HeQuyChieuType.hxx">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\HeQuyChieuType.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\HeQuyChieuType.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Entity\HeQuyChieuType-odb.hxx;Entity\HeQuyChieuType-odb.cxx;Entity\HeQuyChieuType-odb.ixx;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\HeQuyChieuType.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\HeQuyChieuType.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Entity\HeQuyChieuType-odb.hxx;Entity\HeQuyChieuType-odb.cxx;Entity\HeQuyChieuType-odb.ixx;%(Outputs)</Outputs>
     </CustomBuild>
-    <ClInclude Include="NhomTuLieu-odb.hxx" />
-    <QtMoc Include="PhanLoaiTuLieuWidget.h" />
-    <ClInclude Include="OracleConnection.h" />
-    <ClInclude Include="TuLieu-odb.ixx">
-      <FileType>Document</FileType>
-    </ClInclude>
-    <ClCompile Include="TuLieuBanDo-odb.cxx" />
-    <CustomBuild Include="TuLieu.hxx">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"> odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --generate-query --generate-schema TuLieu.hxx</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb TuLieu.hxx</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TuLieu-odb.hxx;TuLieu-odb.cxx;TuLieu-odb.ixx;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'"> odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --generate-query --generate-schema TuLieu.hxx</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb TuLieu.hxx</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TuLieu-odb.hxx;TuLieu-odb.cxx;TuLieu-odb.ixx;%(Outputs)</Outputs>
+    <ClInclude Include="Entity\HeQuyChieuType-odb.hxx" />
+    <CustomBuild Include="Entity\Kho.hxx">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\Kho.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\Kho.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Entity\Kho-odb.hxx;Entity\Kho-odb.cxx;Entity\Kho-odb.ixx;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\Kho.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\Kho.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Entity\Kho-odb.hxx;Entity\Kho-odb.cxx;Entity\Kho-odb.ixx;%(Outputs)</Outputs>
     </CustomBuild>
-    <ClInclude Include="TuLieu-odb.hxx" />
-    <ClInclude Include="TuLieuBanDo-odb.ixx">
-      <FileType>CppModule</FileType>
-    </ClInclude>
-    <ClCompile Include="TuLieuType-odb.cxx" />
-    <ClInclude Include="TuLieuType-odb.ixx">
+    <ClInclude Include="Entity\Kho-odb.hxx" />
+    <CustomBuild Include="Entity\NguoiKy.hxx">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\NguoiKy.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\NguoiKy.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Entity\NguoiKy-odb.hxx;Entity\NguoiKy-odb.cxx;Entity\NguoiKy-odb.ixx;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\NguoiKy.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\NguoiKy.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Entity\NguoiKy-odb.hxx;Entity\NguoiKy-odb.cxx;Entity\NguoiKy-odb.ixx;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="Entity\NguoiKy-odb.hxx" />
+    <ClInclude Include="Entity\NhomTuLieu-odb.ixx">
       <FileType>Document</FileType>
     </ClInclude>
-    <ClCompile Include="Utils.cpp" />
-    <ClCompile Include="Vietnamese.cpp" />
+    <ClCompile Include="Entity\PhieuNhapKho-odb.cxx" />
+    <ClInclude Include="Entity\PhieuNhapKho-odb.ixx">
+      <FileType>Document</FileType>
+    </ClInclude>
+    <ClCompile Include="Entity\PhieuNhapKhoChiTiet-odb.cxx" />
+    <ClInclude Include="Entity\PhieuNhapKhoChiTiet-odb.ixx">
+      <FileType>Document</FileType>
+    </ClInclude>
+    <ClCompile Include="Entity\PhuongPhapTLType-odb.cxx" />
+    <CustomBuild Include="Entity\PhieuNhapKho.hxx">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\PhieuNhapKho.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\PhieuNhapKho.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Entity\PhieuNhapKho-odb.hxx;Entity\PhieuNhapKho-odb.cxx;Entity\PhieuNhapKho-odb.ixx;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\PhieuNhapKho.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\PhieuNhapKho.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Entity\PhieuNhapKho-odb.hxx;Entity\PhieuNhapKho-odb.cxx;Entity\PhieuNhapKho-odb.ixx;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="Entity\PhieuNhapKho-odb.hxx" />
+    <CustomBuild Include="Entity\PhieuNhapKhoChiTiet.hxx">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\PhieuNhapKhoChiTiet.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\PhieuNhapKhoChiTiet.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Entity\PhieuNhapKhoChiTiet-odb.hxx;Entity\PhieuNhapKhoChiTiet-odb.cxx;Entity\PhieuNhapKhoChiTiet-odb.ixx;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\PhieuNhapKhoChiTiet.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\PhieuNhapKhoChiTiet.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Entity\PhieuNhapKhoChiTiet-odb.hxx;Entity\PhieuNhapKhoChiTiet-odb.cxx;Entity\PhieuNhapKhoChiTiet-odb.ixx;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="Entity\PhieuNhapKhoChiTiet-odb.hxx" />
+    <ClInclude Include="Entity\PhuongPhapTLType-odb.ixx">
+      <FileType>Document</FileType>
+    </ClInclude>
+    <ClCompile Include="Entity\TonKho-odb.cxx" />
+    <ClInclude Include="Entity\TonKho-odb.ixx">
+      <FileType>Document</FileType>
+    </ClInclude>
+    <ClCompile Include="Entity\TuLieu-odb.cxx" />
+    <CustomBuild Include="Entity\PhuongPhapTLType.hxx">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\PhuongPhapTLType.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\PhuongPhapTLType.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Entity\PhuongPhapTLType-odb.hxx;Entity\PhuongPhapTLType-odb.cxx;Entity\PhuongPhapTLType-odb.ixx;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\PhuongPhapTLType.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\PhuongPhapTLType.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Entity\PhuongPhapTLType-odb.hxx;Entity\PhuongPhapTLType-odb.cxx;Entity\PhuongPhapTLType-odb.ixx;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="Entity\PhuongPhapTLType-odb.hxx" />
+    <CustomBuild Include="Entity\TonKho.hxx">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TonKho.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TonKho.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Entity\TonKho-odb.hxx;Entity\TonKho-odb.cxx;Entity\TonKho-odb.ixx;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TonKho.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TonKho.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Entity\TonKho-odb.hxx;Entity\TonKho-odb.cxx;Entity\TonKho-odb.ixx;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="Entity\TonKho-odb.hxx" />
+    <ClInclude Include="Entity\TuLieu-odb.ixx">
+      <FileType>Document</FileType>
+    </ClInclude>
+    <ClCompile Include="Entity\TuLieuBanDo-odb.cxx" />
+    <ClInclude Include="Entity\TuLieuBanDo-odb.ixx">
+      <FileType>Document</FileType>
+    </ClInclude>
+    <ClCompile Include="Entity\TuLieuType-odb.cxx" />
+    <ClInclude Include="Entity\TuLieuType-odb.ixx">
+      <FileType>Document</FileType>
+    </ClInclude>
+    <ClCompile Include="Entity\TyLeType-odb.cxx" />
+    <ClInclude Include="Entity\TyLeType-odb.ixx">
+      <FileType>Document</FileType>
+    </ClInclude>
+    <ClCompile Include="Widget\NhapKhoWidget.cpp" />
+    <ClCompile Include="Widget\PhanLoaiTuLieuWidget.cpp" />
+    <ClCompile Include="Widget\ScanningWidget.cpp" />
+    <ClInclude Include="Entity\NhomTuLieu-odb.hxx" />
+    <ClInclude Include="Entity\TuLieu-odb.hxx" />
+    <ClInclude Include="Entity\TuLieuBanDo-odb.hxx" />
+    <ClInclude Include="Entity\TuLieuType-odb.hxx" />
+    <ClInclude Include="Entity\TyLeType-odb.hxx" />
+    <CustomBuild Include="Entity\TyLeType.hxx">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TyLeType.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TyLeType.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Entity\TyLeType-odb.hxx;Entity\TyLeType-odb.cxx;Entity\TyLeType-odb.ixx;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TyLeType.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TyLeType.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Entity\TyLeType-odb.hxx;Entity\TyLeType-odb.cxx;Entity\TyLeType-odb.ixx;%(Outputs)</Outputs>
+    </CustomBuild>
+    <QtMoc Include="Widget\NhapKhoWidget.h" />
+    <QtMoc Include="Widget\PhanLoaiTuLieuWidget.h" />
+    <QtMoc Include="Widget\ScanningWidget.h" />
+    <ClInclude Include="Core\ConnectionParams.h" />
+    <QtMoc Include="Core\Database.h" />
+    <QtMoc Include="Core\Copier.h" />
+    <QtMoc Include="Core\Scanner.h" />
+    <ClInclude Include="Core\SimpleCrypt.h" />
+    <ClInclude Include="Core\Utils.h" />
+    <ClInclude Include="Core\Vietnamese.h" />
+    <QtMoc Include="Dialog\ConnectionSettingDialog.h" />
+    <CustomBuild Include="Entity\NhomTuLieu.hxx">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\NhomTuLieu.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\NhomTuLieu.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Entity\NhomTuLieu-odb.hxx;Entity\NhomTuLieu-odb.cxx;Entity\NhomTuLieu-odb.ixx;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\NhomTuLieu.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\NhomTuLieu.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Entity\NhomTuLieu-odb.hxx;Entity\NhomTuLieu-odb.cxx;Entity\NhomTuLieu-odb.ixx;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="Entity\TuLieu.hxx">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TuLieu.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TuLieu.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Entity\TuLieu-odb.hxx;Entity\TuLieu-odb.cxx;Entity\TuLieu-odb.ixx;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TuLieu.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TuLieu.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Entity\TuLieu-odb.hxx;Entity\TuLieu-odb.cxx;Entity\TuLieu-odb.ixx;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="Entity\TuLieuBanDo.hxx">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TuLieuBanDo.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TuLieuBanDo.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Entity\TuLieuBanDo-odb.hxx;Entity\TuLieuBanDo-odb.cxx;Entity\TuLieuBanDo-odb.ixx;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TuLieuBanDo.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TuLieuBanDo.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Entity\TuLieuBanDo-odb.hxx;Entity\TuLieuBanDo-odb.cxx;Entity\TuLieuBanDo-odb.ixx;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="Entity\TuLieuType.hxx">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TuLieuType.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TuLieuType.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Entity\TuLieuType-odb.hxx;Entity\TuLieuType-odb.cxx;Entity\TuLieuType-odb.ixx;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TuLieuType.hxx</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --default-pointer std::shared_ptr --generate-query --generate-schema --schema-format embedded --output-dir Entity Entity\TuLieuType.hxx</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Entity\TuLieuType-odb.hxx;Entity\TuLieuType-odb.cxx;Entity\TuLieuType-odb.ixx;%(Outputs)</Outputs>
+    </CustomBuild>
     <QtRcc Include="MainWindow.qrc" />
     <QtRcc Include="style.qrc" />
-    <QtUic Include="ConnectionSettingDialog.ui" />
+    <QtUic Include="Dialog\ConnectionSettingDialog.ui" />
+    <QtUic Include="Dialog\ThemCongVanDialog.ui" />
     <QtUic Include="MainWindow.ui" />
     <QtMoc Include="MainWindow.h" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="main.cpp" />
-    <QtUic Include="NhapKhoWidget.ui" />
-    <QtUic Include="PhanLoaiTuLieuWidget.ui" />
-    <QtUic Include="ScanningWidget.ui" />
+    <QtUic Include="Widget\NhapKhoWidget.ui" />
+    <QtUic Include="Widget\PhanLoaiTuLieuWidget.ui" />
+    <QtUic Include="Widget\ScanningWidget.ui" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="vImporter.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="ScanningWidget.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ConnectionParams.h" />
-    <ClInclude Include="SimpleCrypt.h" />
-    <CustomBuild Include="TuLieuBanDo.hxx">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --generate-schema --generate-query TuLieuBanDo.hxx</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb TuLieuBanDo.hxx</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TuLieuBanDo-odb.hxx;TuLieuBanDo-odb.cxx;TuLieuBanDo-odb.ixx;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --generate-schema --generate-query TuLieuBanDo.hxx</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb TuLieuBanDo.hxx</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TuLieuBanDo-odb.hxx;TuLieuBanDo-odb.cxx;TuLieuBanDo-odb.ixx;%(Outputs)</Outputs>
-    </CustomBuild>
-    <ClInclude Include="TuLieuBanDo-odb.hxx" />
-    <CustomBuild Include="TuLieuType.hxx">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"> odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --generate-query --generate-schema TuLieuType.hxx</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">odb TuLieuType.hxx</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TuLieuType-odb.hxx;TuLieuType-odb.cxx;TuLieuType-odb.ixx;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'"> odb.exe --database oracle --std c++11 --profile qt -D Q_COMPILER_CONSTEXPR --generate-query --generate-schema TuLieuType.hxx</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">odb TuLieuType.hxx</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TuLieuType-odb.hxx;TuLieuType-odb.cxx;TuLieuType-odb.ixx;%(Outputs)</Outputs>
-    </CustomBuild>
-    <ClInclude Include="TuLieuType-odb.hxx" />
-    <ClInclude Include="Vietnamese.h" />
-    <QtMoc Include="Copier.h" />
-    <QtMoc Include="ConnectionSettingDialog.h" />
-    <ClInclude Include="GlobalVariables.h" />
-    <ClInclude Include="Utils.h" />
-    <QtMoc Include="Scanner.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

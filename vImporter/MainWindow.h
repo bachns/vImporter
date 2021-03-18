@@ -11,7 +11,6 @@ class MainWindow final : public QMainWindow, Ui::MainWindowClass
 
 public:
 	explicit MainWindow(QWidget* parent = Q_NULLPTR);
-	~MainWindow();
 
 private slots:
 	void openSettingPage();

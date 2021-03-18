@@ -10,7 +10,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(ODB_DIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>odb-d.lib;odb-oracle-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>odb-d.lib;odb-oracle-d.lib;odb-qt-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />

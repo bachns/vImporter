@@ -1,14 +1,20 @@
 <RCC>
-    <qresource prefix="/">
-        <file>icons/apply.svg</file>
-        <file>icons/cancel.svg</file>
-        <file>icons/connection.svg</file>
-        <file>icons/vImporter.svg</file>
-        <file>icons/image.svg</file>
-        <file>icons/database.svg</file>
-        <file>icons/setting.svg</file>
-        <file>icons/configuration.svg</file>
-        <file>icons/scan.svg</file>
-        <file>icons/placeholder.svg</file>
-    </qresource>
+  <qresource prefix="/">
+    <file>icons/folder.svg</file>
+    <file>icons/apply.svg</file>
+    <file>icons/cancel.svg</file>
+    <file>icons/connection.svg</file>
+    <file>icons/vImporter.svg</file>
+    <file>icons/image.svg</file>
+    <file>icons/database.svg</file>
+    <file>icons/setting.svg</file>
+    <file>icons/configuration.svg</file>
+    <file>icons/scan.svg</file>
+    <file>icons/placeholder.svg</file>
+    <file>icons/warning.svg</file>
+    <file>icons/file.svg</file>
+    <file>icons/execute.svg</file>
+    <file>icons/clean.svg</file>
+    <file>icons/add.svg</file>
+  </qresource>
 </RCC>

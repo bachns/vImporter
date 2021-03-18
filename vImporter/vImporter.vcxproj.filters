@@ -34,8 +34,14 @@
     <Filter Include="Main">
       <UniqueIdentifier>{7d9092df-59ae-4ead-9e96-74ebced9e36f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Entities">
+    <Filter Include="Entity">
       <UniqueIdentifier>{39529193-13d7-4d9f-b291-8c9d1ce4c4be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\hxx">
+      <UniqueIdentifier>{5904821a-4fd5-428f-a007-87535375040e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\odb">
+      <UniqueIdentifier>{b6a225a2-4537-4265-9f24-5b9511ea5297}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -47,59 +53,86 @@
     </QtRcc>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Copier.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Vietnamese.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Scanner.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="ConnectionSettingDialog.cpp">
-      <Filter>Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="ScanningWidget.cpp">
-      <Filter>Widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="GlobalVariables.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="MainWindow.cpp">
       <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
-    <ClCompile Include="SimpleCrypt.cpp">
+    <ClCompile Include="Core\ConnectionParams.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="TuLieuBanDo-odb.cxx">
-      <Filter>Entities</Filter>
+    <ClCompile Include="Core\Database.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="TuLieu-odb.cxx">
-      <Filter>Entities</Filter>
+    <ClCompile Include="Core\Copier.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="TuLieuType-odb.cxx">
-      <Filter>Entities</Filter>
+    <ClCompile Include="Core\Scanner.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="NhomTuLieu-odb.cxx">
-      <Filter>Entities</Filter>
+    <ClCompile Include="Core\SimpleCrypt.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="PhanLoaiTuLieuWidget.cpp">
+    <ClCompile Include="Core\Utils.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Vietnamese.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialog\ConnectionSettingDialog.cpp">
+      <Filter>Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Widget\NhapKhoWidget.cpp">
       <Filter>Widgets</Filter>
     </ClCompile>
-    <ClCompile Include="ConnectionParams.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="NhapKhoWidget.cpp">
+    <ClCompile Include="Widget\PhanLoaiTuLieuWidget.cpp">
       <Filter>Widgets</Filter>
     </ClCompile>
-    <ClCompile Include="OracleConnection.cpp">
+    <ClCompile Include="Widget\ScanningWidget.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\NhomTuLieu-odb.cxx">
+      <Filter>Entity\odb</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\TuLieuBanDo-odb.cxx">
+      <Filter>Entity\odb</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\TuLieu-odb.cxx">
+      <Filter>Entity\odb</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\TuLieuType-odb.cxx">
+      <Filter>Entity\odb</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\MapInfo.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\TyLeType-odb.cxx">
+      <Filter>Entity\odb</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\HeQuyChieuType-odb.cxx">
+      <Filter>Entity\odb</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\PhuongPhapTLType-odb.cxx">
+      <Filter>Entity\odb</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\Kho-odb.cxx">
+      <Filter>Entity\odb</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\PhieuNhapKho-odb.cxx">
+      <Filter>Entity\odb</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\PhieuNhapKhoChiTiet-odb.cxx">
+      <Filter>Entity\odb</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialog\ThemCongVanDialog.cpp">
+      <Filter>Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\NguoiKy-odb.cxx">
+      <Filter>Entity\odb</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\TonKho-odb.cxx">
+      <Filter>Entity\odb</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -108,104 +141,179 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="ConnectionSettingDialog.ui">
-      <Filter>Dialogs</Filter>
-    </QtUic>
-    <QtUic Include="ScanningWidget.ui">
-      <Filter>Widgets</Filter>
-    </QtUic>
     <QtUic Include="MainWindow.ui">
       <Filter>Main</Filter>
     </QtUic>
-    <QtUic Include="PhanLoaiTuLieuWidget.ui">
+    <QtUic Include="Dialog\ConnectionSettingDialog.ui">
+      <Filter>Dialogs</Filter>
+    </QtUic>
+    <QtUic Include="Widget\NhapKhoWidget.ui">
       <Filter>Widgets</Filter>
     </QtUic>
-    <QtUic Include="NhapKhoWidget.ui">
+    <QtUic Include="Widget\PhanLoaiTuLieuWidget.ui">
       <Filter>Widgets</Filter>
+    </QtUic>
+    <QtUic Include="Widget\ScanningWidget.ui">
+      <Filter>Widgets</Filter>
+    </QtUic>
+    <QtUic Include="Dialog\ThemCongVanDialog.ui">
+      <Filter>Dialogs</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="Copier.h">
-      <Filter>Core</Filter>
-    </QtMoc>
-    <QtMoc Include="Scanner.h">
-      <Filter>Core</Filter>
-    </QtMoc>
-    <QtMoc Include="ConnectionSettingDialog.h">
-      <Filter>Dialogs</Filter>
-    </QtMoc>
-    <QtMoc Include="ScanningWidget.h">
-      <Filter>Widgets</Filter>
-    </QtMoc>
     <QtMoc Include="MainWindow.h">
       <Filter>Main</Filter>
     </QtMoc>
-    <QtMoc Include="PhanLoaiTuLieuWidget.h">
+    <QtMoc Include="Core\Database.h">
+      <Filter>Core</Filter>
+    </QtMoc>
+    <QtMoc Include="Core\Copier.h">
+      <Filter>Core</Filter>
+    </QtMoc>
+    <QtMoc Include="Core\Scanner.h">
+      <Filter>Core</Filter>
+    </QtMoc>
+    <QtMoc Include="Widget\PhanLoaiTuLieuWidget.h">
       <Filter>Widgets</Filter>
     </QtMoc>
-    <QtMoc Include="NhapKhoWidget.h">
+    <QtMoc Include="Dialog\ConnectionSettingDialog.h">
+      <Filter>Dialogs</Filter>
+    </QtMoc>
+    <QtMoc Include="Widget\NhapKhoWidget.h">
       <Filter>Widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="Widget\ScanningWidget.h">
+      <Filter>Widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="Dialog\ThemCongVanDialog.h">
+      <Filter>Dialogs</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Utils.h">
+    <ClInclude Include="Core\ConnectionParams.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Vietnamese.h">
+    <ClInclude Include="Core\SimpleCrypt.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="GlobalVariables.h">
+    <ClInclude Include="Core\Utils.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="SimpleCrypt.h">
+    <ClInclude Include="Core\Vietnamese.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="TuLieuBanDo-odb.ixx">
-      <Filter>Entities</Filter>
+    <ClInclude Include="Entity\NhomTuLieu-odb.hxx">
+      <Filter>Entity\odb</Filter>
     </ClInclude>
-    <ClInclude Include="TuLieuBanDo-odb.hxx">
-      <Filter>Entities</Filter>
+    <ClInclude Include="Entity\TuLieuBanDo-odb.hxx">
+      <Filter>Entity\odb</Filter>
     </ClInclude>
-    <ClInclude Include="TuLieu-odb.hxx">
-      <Filter>Entities</Filter>
+    <ClInclude Include="Entity\TuLieu-odb.hxx">
+      <Filter>Entity\odb</Filter>
     </ClInclude>
-    <ClInclude Include="TuLieu-odb.ixx">
-      <Filter>Entities</Filter>
+    <ClInclude Include="Entity\TuLieuType-odb.hxx">
+      <Filter>Entity\odb</Filter>
     </ClInclude>
-    <ClInclude Include="TuLieuType-odb.ixx">
-      <Filter>Entities</Filter>
+    <ClInclude Include="Entity\NhomTuLieu-odb.ixx">
+      <Filter>Entity\odb</Filter>
     </ClInclude>
-    <ClInclude Include="TuLieuType-odb.hxx">
-      <Filter>Entities</Filter>
+    <ClInclude Include="Entity\TuLieuBanDo-odb.ixx">
+      <Filter>Entity\odb</Filter>
     </ClInclude>
-    <ClInclude Include="NhomTuLieu-odb.ixx">
-      <Filter>Entities</Filter>
+    <ClInclude Include="Entity\TuLieu-odb.ixx">
+      <Filter>Entity\odb</Filter>
     </ClInclude>
-    <ClInclude Include="NhomTuLieu-odb.hxx">
-      <Filter>Entities</Filter>
+    <ClInclude Include="Entity\TuLieuType-odb.ixx">
+      <Filter>Entity\odb</Filter>
     </ClInclude>
-    <ClInclude Include="ConnectionParams.h">
+    <ClInclude Include="Core\MapInfo.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="OracleConnection.h">
-      <Filter>Core</Filter>
+    <ClInclude Include="Entity\TyLeType-odb.hxx">
+      <Filter>Entity\odb</Filter>
     </ClInclude>
-    <ClInclude Include="CongVan.hxx">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Entity\TyLeType-odb.ixx">
+      <Filter>Entity\odb</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\HeQuyChieuType-odb.hxx">
+      <Filter>Entity\odb</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\HeQuyChieuType-odb.ixx">
+      <Filter>Entity\odb</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\PhuongPhapTLType-odb.hxx">
+      <Filter>Entity\odb</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\PhuongPhapTLType-odb.ixx">
+      <Filter>Entity\odb</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\Kho-odb.hxx">
+      <Filter>Entity\odb</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\PhieuNhapKho-odb.hxx">
+      <Filter>Entity\odb</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\Kho-odb.ixx">
+      <Filter>Entity\odb</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\PhieuNhapKho-odb.ixx">
+      <Filter>Entity\odb</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\PhieuNhapKhoChiTiet-odb.hxx">
+      <Filter>Entity\odb</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\PhieuNhapKhoChiTiet-odb.ixx">
+      <Filter>Entity\odb</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\NguoiKy-odb.hxx">
+      <Filter>Entity\odb</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\NguoiKy-odb.ixx">
+      <Filter>Entity\odb</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\TonKho-odb.hxx">
+      <Filter>Entity\odb</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\TonKho-odb.ixx">
+      <Filter>Entity\odb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="TuLieuBanDo.hxx">
-      <Filter>Entities</Filter>
+    <CustomBuild Include="Entity\NhomTuLieu.hxx">
+      <Filter>Entity\hxx</Filter>
     </CustomBuild>
-    <CustomBuild Include="TuLieu.hxx">
-      <Filter>Entities</Filter>
+    <CustomBuild Include="Entity\TuLieu.hxx">
+      <Filter>Entity\hxx</Filter>
     </CustomBuild>
-    <CustomBuild Include="NhomTuLieu.hxx">
-      <Filter>Entities</Filter>
+    <CustomBuild Include="Entity\TuLieuBanDo.hxx">
+      <Filter>Entity\hxx</Filter>
     </CustomBuild>
-    <CustomBuild Include="TuLieuType.hxx">
-      <Filter>Entities</Filter>
+    <CustomBuild Include="Entity\TuLieuType.hxx">
+      <Filter>Entity\hxx</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Entity\TyLeType.hxx">
+      <Filter>Entity\hxx</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Entity\HeQuyChieuType.hxx">
+      <Filter>Entity\hxx</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Entity\PhuongPhapTLType.hxx">
+      <Filter>Entity\hxx</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Entity\Kho.hxx">
+      <Filter>Entity\hxx</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Entity\PhieuNhapKho.hxx">
+      <Filter>Entity\hxx</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Entity\PhieuNhapKhoChiTiet.hxx">
+      <Filter>Entity\hxx</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Entity\NguoiKy.hxx">
+      <Filter>Entity\hxx</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Entity\TonKho.hxx">
+      <Filter>Entity\hxx</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

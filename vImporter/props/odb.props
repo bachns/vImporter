@@ -6,10 +6,11 @@
   <ItemDefinitionGroup>
     <Link>
       <AdditionalLibraryDirectories>$(ODB_DIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>odb.lib;odb-pgsql.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>odb.lib;odb-oracle.lib;odb-qt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ClCompile>
       <AdditionalIncludeDirectories>$(ODB_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4275;4068;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup />
